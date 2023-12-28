@@ -1,0 +1,38 @@
+<aside
+  class="side-menu"
+  [ngClass]="{'close': !isMenuOpen}"
+>
+  <button
+    class="side-menu__menu-button"
+    (click)="onClickSideMenuButton()"
+  >
+    <i class="bi bi-chevron-left side-menu__menu-button-icon"></i>
+  </button>
+
+  <div class="menu-bar">
+    <div class="menu">
+      <ul class="menu-links">
+        <li
+          *ngFor="let item of config"
+          class="nav-link"
+          [ngClass]="{'active': item.active}"
+          [routerLink]="item.link"
+        >
+          <a>
+            <i
+              class="nav-link__icon"
+              [class]="'bi-'+item.icon"
+            ></i>
+            <span
+              class="nav-link__text"
+              [ngClass]="{'text': isMenuOpen}"
+            >
+              {{item.name}}
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</aside>
+
