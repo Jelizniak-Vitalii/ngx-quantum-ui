@@ -8,8 +8,8 @@ export interface SidebarMenuItem {
 
 const sideMenuComponentConfig: SidebarMenuItem[] = [
   {
-    name: 'Profile',
-    link: 'common'
+    name: 'Components',
+    link: 'components'
   },
 ]
 

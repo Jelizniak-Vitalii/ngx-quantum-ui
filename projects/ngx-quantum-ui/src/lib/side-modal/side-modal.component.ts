@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy } from '@angular/core';
-import { NgxQuantumUiSideModalConfig } from '../shared/models';
+import { NgxQuantumUiSideModalConfig } from '../shared';
 
 @Component({
   selector: 'ngx-quantum-ui-side-modal',
@@ -10,7 +10,7 @@ import { NgxQuantumUiSideModalConfig } from '../shared/models';
 export class NgxQuantumUiSideModal implements OnDestroy {
   @Input() title: string = '';
   @Input() openBtnText: string = 'Open Side Modal';
-  @Input() openBtnClass: string = 'test';
+  @Input() openBtnClass: string = '';
   @Input() set config(config: NgxQuantumUiSideModalConfig) {
     this._config = this.config;
 

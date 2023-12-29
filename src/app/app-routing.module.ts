@@ -4,6 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: 'components'
+  },
+  {
+    path: 'components',
     loadChildren: () => import('./common-components/common-components.module').then(m => m.CommonComponentsModule)
   }
 ];
