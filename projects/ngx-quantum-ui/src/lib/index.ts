@@ -1,2 +1,3 @@
-export * from './shared';
-export * from './side-modal/side-modal.component';
+export * from './components';
+export * from './services';
+export * from './interfaces';

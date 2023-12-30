@@ -1,27 +1,10 @@
-.quantum-ui-side-modal-btn {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.quantum-ui-side-modal-btn:hover {
-  opacity: 0.6;
-}
-
-.quantum-ui-side-modal-dialog {
+:host {
   position: fixed;
   height: 100%;
   width: 100%;
-  max-width: 500px;
-  right: -500px;
-  top: 0;
-  transition: 0.3s ease-out;
-  z-index: 100;
-}
-
-.quantum-ui-side-modal-open {
   right: 0;
+  top: 0;
+  z-index: 100;
 }
 
 .quantum-ui-side-modal-content {

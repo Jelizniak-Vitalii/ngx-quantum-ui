@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
-import { NgClass, NgIf, NgTemplateOutlet } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
 
 import { NgxQuantumUiSideModal } from './';
 
 @NgModule({
   declarations: [NgxQuantumUiSideModal],
-  imports: [TranslateModule, NgIf, NgTemplateOutlet, NgClass],
+  imports: [CommonModule],
   exports: [NgxQuantumUiSideModal]
 })
 export class NgxQuantumUiModule {}

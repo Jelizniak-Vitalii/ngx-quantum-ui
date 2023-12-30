@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgxQuantumUiModule } from '../../projects/ngx-quantum-ui/src/lib/ngx-quantum-ui.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -24,6 +25,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
