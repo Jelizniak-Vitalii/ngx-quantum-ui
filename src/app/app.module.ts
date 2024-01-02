@@ -19,7 +19,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidebarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

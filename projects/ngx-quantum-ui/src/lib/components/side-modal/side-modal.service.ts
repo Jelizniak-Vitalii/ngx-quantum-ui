@@ -6,6 +6,7 @@ import {
   Injectable,
   Injector,
   OnDestroy,
+  TemplateRef
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -31,13 +32,26 @@ export class NgxQuantumUiSideModalService implements OnDestroy {
     this.mySubscription.unsubscribe();
   }
 
+  private createComponent(content: any) {
+    if (content instanceof TemplateRef) {
+      return content.createEmbeddedView(null).rootNodes;
+    } else if (content instanceof Function) {
+      const component = this.componentFactoryResolver
+        .resolveComponentFactory(content).create(this.injector).location.nativeElement;
+      return [component];
+    } else {
+      return content;
+    }
+  }
+
   open(options: NgxQuantumUiSideModalOptions) {
     if (this.componentRef) {
       this.close();
     } else {
+      const component = this.createComponent(options.modalBodyTemplate);
       this.componentRef = this.componentFactoryResolver
         .resolveComponentFactory(NgxQuantumUiSideModal)
-        .create(this.injector);
+        .create(this.injector, [component]);
 
       this.componentRef.instance.options = {
         ...this.defaultOptions,

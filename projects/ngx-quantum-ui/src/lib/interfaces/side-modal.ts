@@ -1,4 +1,4 @@
-import { TemplateRef } from '@angular/core';
+import { TemplateRef, Type } from '@angular/core';
 
 export interface NgxQuantumUiSideModalOptions {
   /**
@@ -24,5 +24,5 @@ export interface NgxQuantumUiSideModalOptions {
   /**
    * Modal body template use ng-template
    */
-  modalBodyTemplate?: TemplateRef<{}> | null;
+  modalBodyTemplate?: TemplateRef<any> | null | Type<any>;
 }

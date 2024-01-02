@@ -11,8 +11,6 @@
       {{options.modalBodyText}}
     </div>
 
-    <ng-container *ngIf="options.modalBodyTemplate">
-      <ng-container *ngTemplateOutlet="options.modalBodyTemplate"></ng-container>
-    </ng-container>
+    <ng-content></ng-content>
   </div>
 </div>

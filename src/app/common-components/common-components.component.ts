@@ -17,7 +17,6 @@ export class CommonComponentsComponent  {
   openSideModal() {
     this.ngxQuantumUiSideModalService.open({
       title: 'Side Modal Example',
-      modalBodyText:" test text",
       modalBodyTemplate: this.sideModalTemplateBody
     });
   }
