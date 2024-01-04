@@ -36,7 +36,7 @@ export class NgxQuantumUiSideModalService {
    * @param options Configuration options for the side modal.
    * @returns An Observable that emits a result when the side modal is closed. Returns void if the modal is already open.
    */
-  open(content: ModalContent, options: NgxQuantumUiSideModalOptions): Observable<any> | void {
+  open(content: ModalContent, options?: NgxQuantumUiSideModalOptions): Observable<any> | void {
     if (this.componentRef) {
       this.close();
     } else {
