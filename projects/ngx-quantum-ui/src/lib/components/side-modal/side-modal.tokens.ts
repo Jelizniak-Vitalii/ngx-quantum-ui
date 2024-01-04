@@ -4,10 +4,8 @@ import { NgxQuantumUiSideModalOptions } from '../../interfaces';
 export const NGX_QUANTUM_SIDE_MODAL_DEFAULT_OPTIONS: NgxQuantumUiSideModalOptions = {
   title: '',
   hideCloseBtn: false,
-  modalBodyText: '',
-  maxWidth: '500px',
-  duration: '300',
-  modalBodyTemplate: null
+  maxWidth: '500',
+  duration: '300'
 };
 
 export const NGX_QUANTUM_SIDE_MODAL_OPTIONS = new InjectionToken<Partial<NgxQuantumUiSideModalOptions>>(

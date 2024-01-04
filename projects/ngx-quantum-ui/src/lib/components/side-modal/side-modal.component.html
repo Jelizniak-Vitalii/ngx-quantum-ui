@@ -1,16 +1,9 @@
 <div class="quantum-ui-side-modal-content">
   <div class="quantum-ui-side-modal__header">
     <div class="quantum-ui-side-modal__header-title">{{options.title}}</div>
-    <div *ngIf="!options?.hideCloseBtn" class="quantum-ui-side-modal__header-close" (click)="closeEvent.emit()"></div>
+    <div *ngIf="!options?.hideCloseBtn" class="quantum-ui-side-modal__header-close" (click)="close()"></div>
   </div>
   <div class="quantum-ui-side-modal__body">
-    <div
-      *ngIf="options?.modalBodyText"
-      class="quantum-ui-side-modal__body-text"
-    >
-      {{options.modalBodyText}}
-    </div>
-
     <ng-content></ng-content>
   </div>
 </div>

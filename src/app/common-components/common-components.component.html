@@ -1,5 +1,8 @@
 <button (click)="openSideModal()">Open Side Modal</button>
+<button (click)="closeSideModal()">Close Side Modal</button>
 
 <ng-template #sideModalTemplateBody>
-  <div>Test body test</div>
+  <div>
+    <div *ngFor="let item of [1, 2, 3]">Test body test</div>
+  </div>
 </ng-template>

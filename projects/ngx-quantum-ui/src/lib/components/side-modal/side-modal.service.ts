@@ -1,81 +1,80 @@
 import {
   ApplicationRef,
-  ComponentFactoryResolver,
   ComponentRef,
   inject,
   Injectable,
   Injector,
-  OnDestroy,
-  TemplateRef
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Subscription } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { NGX_QUANTUM_SIDE_MODAL_OPTIONS } from './side-modal.tokens';
 import { NgxQuantumUiSideModal } from './side-modal.component';
 import { NgxQuantumUiSideModalOptions } from '../../interfaces';
+import { ModalContent } from '../../types';
+import { ModalService } from '../../services';
 
+/**
+ * NgxQuantumUiSideModalService provides methods for opening and closing side modal dialogs.
+ */
 @Injectable({
   providedIn: 'root'
 })
-export class NgxQuantumUiSideModalService implements OnDestroy {
-  private readonly appRef = inject(ApplicationRef);
-  private readonly componentFactoryResolver = inject(ComponentFactoryResolver);
+export class NgxQuantumUiSideModalService {
+  private readonly applicationRef = inject(ApplicationRef);
   private readonly injector = inject(Injector);
   private readonly document = inject(DOCUMENT);
   private readonly defaultOptions = inject(NGX_QUANTUM_SIDE_MODAL_OPTIONS);
-  private mySubscription: Subscription = new Subscription();
+  private readonly modalService = inject(ModalService);
 
-  componentRef!: ComponentRef<NgxQuantumUiSideModal> | null;
+  private componentRef!: ComponentRef<NgxQuantumUiSideModal> | null;
+  private modalNotifier?: Subject<any>;
 
-  ngOnDestroy() {
-    this.mySubscription.unsubscribe();
-  }
-
-  private createComponent(content: any) {
-    if (content instanceof TemplateRef) {
-      return content.createEmbeddedView(null).rootNodes;
-    } else if (content instanceof Function) {
-      const component = this.componentFactoryResolver
-        .resolveComponentFactory(content).create(this.injector).location.nativeElement;
-      return [component];
-    } else {
-      return content;
-    }
-  }
-
-  open(options: NgxQuantumUiSideModalOptions) {
+  /**
+   * Opens a side modal with the specified content and options.
+   * @param content The content to be displayed in the side modal.
+   * @param options Configuration options for the side modal.
+   * @returns An Observable that emits a result when the side modal is closed. Returns void if the modal is already open.
+   */
+  open(content: ModalContent, options: NgxQuantumUiSideModalOptions): Observable<any> | void {
     if (this.componentRef) {
       this.close();
     } else {
-      const component = this.createComponent(options.modalBodyTemplate);
-      this.componentRef = this.componentFactoryResolver
-        .resolveComponentFactory(NgxQuantumUiSideModal)
-        .create(this.injector, [component]);
+      this.componentRef = this.modalService.createComponent<NgxQuantumUiSideModal>(
+        content,
+        NgxQuantumUiSideModal,
+        this.applicationRef,
+        this.injector
+      );
 
       this.componentRef.instance.options = {
         ...this.defaultOptions,
         ...options
       };
 
-      this.mySubscription = this.componentRef.instance.closeEvent
-        .subscribe(() => this.close());
+      this.componentRef.instance.close = this.close.bind(this);
 
-      this.document.body.appendChild(this.componentRef!.location.nativeElement);
-      this.componentRef.hostView.detectChanges();
+      this.applicationRef.attachView(this.componentRef.hostView);
+      this.document.body.appendChild(this.componentRef.location.nativeElement);
+
+      this.modalNotifier = new Subject();
+      return this.modalNotifier.asObservable()
     }
   }
 
-  close(): void {
-    if (this.componentRef) {
-      this.componentRef.instance.close()
-        .then(() => {
-          if (this.componentRef) {
-            this.appRef.detachView(this.componentRef.hostView);
-            this.componentRef.destroy();
-            this.componentRef = null;
-          }
-        });
-    }
+  /**
+   * Closes the currently open side modal.
+   * @param result The result to be emitted by the observable when the modal is closed.
+   */
+  close(result?: any) {
+    setTimeout(() => {
+      if (this.componentRef) {
+        this.applicationRef.detachView(this.componentRef.hostView);
+        this.componentRef.destroy();
+        this.componentRef = null;
+        this.modalNotifier?.next(result);
+        this.modalNotifier?.complete();
+      }
+    });
   }
 }

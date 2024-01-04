@@ -1,28 +1,24 @@
-import { TemplateRef, Type } from '@angular/core';
-
+/**
+ * Options for configuring NgxQuantumUiSideModal behavior and appearance.
+ */
 export interface NgxQuantumUiSideModalOptions {
   /**
-   * Side modal header title
+   * Title to be displayed in the header of the side modal.
    */
   title?: string;
+
   /**
-   * Hide close button, by default true
+   * Determines whether to hide the close button. By default, it is set to false.
    */
   hideCloseBtn?: boolean;
+
   /**
-   * Modal body text
+   * Specifies the maximum width of the side modal. This can be a string (e.g., '500px') or a number.
    */
-  modalBodyText?: string;
+  maxWidth?: string | number;
+
   /**
-   * Width of the modal
+   * Duration of the modal animation. This can be a string representing a CSS time value (e.g., '300') or a number.
    */
-  maxWidth?: string;
-  /**
-   * Duration of the modal animation
-   */
-  duration?: string;
-  /**
-   * Modal body template use ng-template
-   */
-  modalBodyTemplate?: TemplateRef<any> | null | Type<any>;
+  duration?: string | number;
 }

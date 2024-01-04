@@ -9,13 +9,13 @@ export const ANIMATIONS = {
 export const sideModalAnimation = trigger(ANIMATIONS.SIDE_MODAL_IN_OUT, [
   transition(':enter', [
     style({
-      right: '-{{maxWidth}}'
+      right: '-{{maxWidth}}px'
     }),
     animate(TRANSITION)
-  ], { params: { duration: 300, maxWidth: '500px' } }),
+  ], { params: { duration: 300, maxWidth: '500' } }),
   transition(':leave', [
     animate(TRANSITION, style({
-      right: '-{{maxWidth}}'
+      right: '-{{maxWidth}}px'
     }))
-  ],{ params: { duration: 300, maxWidth: '500px' } })
+  ],{ params: { duration: 300, maxWidth: '500' } })
 ]);

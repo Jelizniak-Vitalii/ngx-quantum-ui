@@ -15,9 +15,14 @@ export class CommonComponentsComponent  {
   ) {}
 
   openSideModal() {
-    this.ngxQuantumUiSideModalService.open({
-      title: 'Side Modal Example',
-      modalBodyTemplate: this.sideModalTemplateBody
+    this.ngxQuantumUiSideModalService.open('TestComponent',{
+      title: 'Side Modal Example'
+    })?.subscribe((res) => {
+      console.log(res);
     });
+  }
+
+  closeSideModal() {
+    this.ngxQuantumUiSideModalService.close('close');
   }
 }
