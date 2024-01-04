@@ -20,13 +20,14 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 0.75px solid #CCCCCC;
-  padding: 20px 0 10px 0;
+  padding: 10px 0 5px 0;
 }
 
 .quantum-ui-side-modal__header-title {
   font-weight: inherit;
   font-family: inherit;
   color: #3D3D4A;
+  font-size: 20px;
 }
 
 .quantum-ui-side-modal__header-close {
