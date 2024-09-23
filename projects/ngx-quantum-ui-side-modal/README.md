@@ -7,7 +7,7 @@ Welcome to NgxQuantum, a comprehensive UI library for Angular applications. Whil
 ### Installation
 
 ```
-npm i ngx-quantum-ui
+npm i ngx-quantum-ui-side-modal
 ```
 
 ### NgxQuantumUiSideModal
