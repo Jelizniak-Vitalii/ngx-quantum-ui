@@ -7,6 +7,8 @@
     "build": "ng build",
     "lib:build": "ng build ngx-quantum-ui",
     "lib:publish": "npm run lib:build && cd dist/ngx-quantum-ui && npm publish",
+    "lib:build:ngx-quantum-ui-side-modal": "ng build ngx-quantum-ui-side-modal",
+    "lib:publish:ngx-quantum-ui-side-modal": "npm run lib:build && cd dist/ngx-quantum-ui-side-modal && npm publish",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

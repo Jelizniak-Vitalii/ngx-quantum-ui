@@ -17,6 +17,9 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "paths": {
+      "ngx-quantum-ui-side-modal": [
+        "dist/ngx-quantum-ui-side-modal"
+      ],
       "quantum-ui": [
         "dist/quantum-ui"
       ]

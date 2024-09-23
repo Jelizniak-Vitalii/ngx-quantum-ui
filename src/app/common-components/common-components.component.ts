@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
-import { NgxQuantumUiSideModalService } from '../../../projects/ngx-quantum-ui/src/lib';
+import { NgxQuantumUiSideModalService } from '../../../projects/ngx-quantum-ui-side-modal/src/lib';
 
 @Component({
   selector: 'app-common-components',

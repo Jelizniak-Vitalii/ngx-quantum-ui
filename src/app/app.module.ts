@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { NgxQuantumUiModule } from '../../projects/ngx-quantum-ui/src/lib/ngx-quantum-ui.module';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,8 +33,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
       },
       defaultLanguage: 'en',
       useDefaultLang: true,
-    }),
-    NgxQuantumUiModule
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
