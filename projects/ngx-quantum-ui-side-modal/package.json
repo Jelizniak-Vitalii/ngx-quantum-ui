@@ -1,6 +1,17 @@
 {
   "name": "ngx-quantum-ui-side-modal",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "keywords": [
+    "angular",
+    "angular2",
+    "ngx",
+    "ngx-quantum-ui",
+    "sideModal",
+    "side-modal",
+    "ng-side-modal",
+    "ngx-side-modal",
+    "side modal"
+  ],
   "peerDependencies": {
     "@angular/common": "^16.0.0",
     "@angular/core": "^16.0.0"
