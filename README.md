@@ -1,27 +1,54 @@
-# QuantumUI
+# NgxQuantumUi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 
-## Development server
+Welcome to NgxQuantum, a comprehensive UI library for Angular applications. While still in its early stages, NgxQuantum currently introduces a robust feature: the NgxQuantumUiSideModalService.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Installation
 
-## Code scaffolding
+```
+npm i ngx-quantum-ui-side-modal
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### NgxQuantumUiSideModal
+NgxQuantumUiSideModalService represents a service for managing side modals in an Angular application.
+### Usage
 
-## Build
+```bash
+constructor(private sideModalService: NgxQuantumUiSideModalService) {}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+// ...
 
-## Running unit tests
+const modalContent: ModalContent = 'Hello, Quantum!'; // You can use a string, TemplateRef, or a Component type as modal content
+const modalOptions: NgxQuantumUiSideModalOptions = {
+  title: 'Welcome Modal',
+  hideCloseBtn: false,
+  maxWidth: '500',
+  duration: '300'
+};
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+this.sideModalService.open(modalContent, modalOptions)
+  .subscribe(result => {
+    console.log('Modal closed with result:', result);
+  });
 
-## Running end-to-end tests
+// ...
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+this.sideModalService.close('Modal Result'); // Closes the currently open modal with an optional result
+```
 
-## Further help
+### Methods
+```
+open(content: ModalContent, options: NgxQuantumUiSideModalOptions): Observable<any> | void
+```
+Opens a new side modal with the specified content and options. Returns an Observable that will emit the result when the modal is closed.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### NgxQuantumUiSideModalOptions
+
+`title`: The title of the modal.
+
+`hideCloseBtn`: Whether to hide the close button (default is false).
+
+`maxWidth`: The maximum width of the modal.
+
+`duration`: The duration of the open/close animation.
