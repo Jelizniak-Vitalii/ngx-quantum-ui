@@ -1,6 +1,7 @@
 {
   "name": "ngx-quantum-ui-side-modal",
-  "version": "0.0.4",
+  "version": "0.0.5",
+  "license": "MIT",
   "keywords": [
     "angular",
     "angular2",
